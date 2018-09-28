@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card  {
+public class Card {
 
     public enum Type{错误=0,武将,步兵,亡灵,异兽,术,军备,骑兵, }  //卡牌种类
     public enum Skill {错误=0,长枪击, 蛊惑 }    //技能，数量繁多
-    public enum Rare { Ashy, White,Green,Blue,Orange,Red}    //稀有度依次上升
+    public enum Rare { Ashy, White,Green,Blue,Purple,Orange,Red}    //稀有度依次上升
     public enum Camp { Wei,Shu,Wu,Qun}  //魏蜀吴群
 
     public string name;
@@ -17,10 +17,15 @@ public class Card  {
     public int turn, atk, hp;    //血 攻 防
     public int soldierNum, treasureNum, magicNum;   //3种卡牌的携带数量（武将限定）
     public List<Skill> skills;  //技能
+    public Sprite image;    //卡图
+
 
     //构造函数，info为卡牌对应的图片名称，记录了卡牌的所有信息
     public Card(string info)
     {
+        //首先获得卡图
+        image = (Sprite)Resources.Load(info,typeof(Sprite));
+        info = info.Substring(0, info.Length - 4);   //去除最后的.jpg
         //以下为解析info并赋值的过程
         string[] tmp = info.Split(new char[] { '_' });
 
@@ -33,7 +38,7 @@ public class Card  {
             case "群": camp = Camp.Qun; break;
             default:
                 Debug.Log("无法解析阵营" + tmp[0]);
-                break;
+                return;
         }
         //解析种类 数量太多 不使用swtich
         string[] types = Enum.GetNames(typeof(Type));
