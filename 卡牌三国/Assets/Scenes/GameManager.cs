@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
         //结算战斗
         Battle();
         //结算死亡
+
             //结算胜利
             //结算buff
 
@@ -90,5 +91,10 @@ public class GameManager : MonoBehaviour {
     void Battle()
     {
 
+    }
+
+    void addCardTo(int i,RealCard rc)
+    {
+        //GameObject go = new GameObject()
     }
 }
