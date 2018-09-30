@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class RealCard:MonoBehaviour
+public class RealCard:ScriptableObject
 {
     //Card类似于数据库，而RealCard则是实际的卡牌
     //场上可能出现任意张同种类的卡

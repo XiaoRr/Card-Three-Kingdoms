@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Card {
 
     public enum Type{错误=0,武将,步兵,亡灵,异兽,术,军备,骑兵,弓手,龙,异族 }  //卡牌种类
-    public enum Skill {错误=0,长枪击, 蛊惑,冲阵2,奋击,盾防,冷箭,冰封2,蜀国联盟,治愈,保护弓手,洞察,
-        火龙息4,自残,偷袭2,急救,炎流星,急救2,陷阱,召唤,毒刃2,毒刃3,火焰,冰封,狂暴,横扫,死战2,飞行,
-        丹术,水镜术,闪电,火龙息,重生,万毒阵,瘟疫蔓延,降士气,吸血,索命,闪电2,魏国同盟,践踏,冰封3,
-        激励骑兵,嗜血术,削弱,索命2,瘟疫,嗜血术2,刃甲,丹术2,降士气2,冲阵4}    //技能，数量繁多
+    public enum MetaSkill {错误=0,长枪击, 蛊惑,冲阵,奋击,盾防,冷箭,冰封,蜀国联盟,治愈,保护弓手,洞察,
+        火龙息,自残,偷袭,急救,炎流星,陷阱,召唤,毒刃,火焰,狂暴,横扫,死战,飞行,
+        丹术,水镜术,闪电,重生,万毒阵,瘟疫蔓延,降士气,吸血,索命,魏国同盟,践踏,
+        激励骑兵,嗜血术,削弱,瘟疫,刃甲,保护步兵,连锁枪,威势,激励步兵,激励全军}    //技能，数量繁多
+    public struct Skill
+    {
+        public MetaSkill skill;
+        public int var;
+    }
     public enum Rare { Ashy, White,Green,Blue,Purple,Orange,Red}    //稀有度依次上升
     public enum Camp { Wei,Shu,Wu,Qun}  //魏蜀吴群
 
@@ -26,6 +32,10 @@ public class Card {
     //构造函数，info为卡牌对应的图片名称，记录了卡牌的所有信息
     public Card(string info)
     {
+        //string s = "F0120BF0201";
+        //Match match = Regex.Match(s, @"(^.+?)(\d+$)");
+        //Debug.Log(match.Groups[0].Value + ' ' + match.Groups[1].Value);
+
         this.info = info;
         //首先获得卡图
         image = (Sprite)Resources.Load(info,typeof(Sprite));
@@ -135,15 +145,30 @@ public class Card {
     //根据字符串匹配枚举值
     Skill MatchSkill(string _skill)
     {
-        string[] skills = Enum.GetNames(typeof(Skill));
+        Skill ans = new Skill();
+        string tar;
+        Match match = Regex.Match(_skill, @"(^.+)(\d+$)");    //提取数字和技能
+        if (match.Groups.Count == 3)    //该技能带有数字
+        {
+            ans.var = int.Parse(match.Groups[2].Value);
+            tar = match.Groups[1].Value;
+        }
+        else
+        {
+            ans.var = 1;    //初始化为1
+            tar = _skill;
+        }
+
+        string[] skills = Enum.GetNames(typeof(MetaSkill));
         foreach (var skill in skills)
         {
-            if (_skill == skill)
+            if (tar == skill)
             {
-                return (Skill)Enum.Parse(typeof(Skill), skill);
+                ans.skill = (MetaSkill)Enum.Parse(typeof(MetaSkill), skill);
+                return ans;
             }
         }
-        Debug.Log("错误的技能类型" + _skill + ' '+ info);
-        return (Skill)0;
+        Debug.Log("错误的技能类型" + _skill+' '+ info);
+        return new Skill();
     }
 }

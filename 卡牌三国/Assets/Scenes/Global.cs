@@ -44,7 +44,7 @@ public static class Global
                         dictionary[tmp.name + 'L'] = dictionary[tmp.name];  //把品质低的key增加一个L字样
                         dictionary[tmp.name] = tmp;
                     }
-                    else if(dictionary[tmp.name].rare < tmp.rare)
+                    else if(dictionary[tmp.name].rare > tmp.rare)
                     {
                         //Debug.Log("出现了不同品质的卡" + tmp.name);
                         dictionary[tmp.name + 'L'] = tmp;    //把品质低的key增加一个L字样
