@@ -22,7 +22,8 @@ public static class Global
             DirectoryInfo direction = new DirectoryInfo(fullPath);
             FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
 
-            Debug.Log(files.Length);
+            Debug.Log("卡牌张数："+files.Length);
+
 
             for (int i = 0; i < files.Length; i++)
             {
