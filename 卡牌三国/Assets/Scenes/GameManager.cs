@@ -48,10 +48,14 @@ public class GameManager : MonoBehaviour {
     {
         //为双方卡组装填7张卡牌
         //A方 究极藏獒队
+
         RealCard rc = new RealCard(cards["藏獒"]);
         for (int i = 0; i < 7; i++)
         {
-            enemyDeck.Add(rc);
+            GameObject card = (GameObject)Instantiate(Resources.Load("Prefabs/战场卡牌"));
+            GameObject mUICanvas = GameObject.Find("我方手牌");
+
+            //enemyDeck.Add(rc);
 
         }
         //B方 沙雕杂鱼队
