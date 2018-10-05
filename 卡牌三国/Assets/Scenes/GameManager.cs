@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour {
         //为双方卡组装填7张卡牌
         //A方 究极藏獒队
 
-        RealCard rc = new RealCard(cards["藏獒"]);
         for (int i = 0; i < 7; i++)
         {
             GameObject card = (GameObject)Instantiate(Resources.Load("Prefabs/战场卡牌"));

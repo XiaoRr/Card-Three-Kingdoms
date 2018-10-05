@@ -17,7 +17,7 @@ namespace Assets.Scenes
          * https://tieba.baidu.com/p/2257092241?red_tag=0900935155 魏蜀吴卡牌图鉴
          * https://tieba.baidu.com/p/2220629375 顶级卡组
          * https://tieba.baidu.com/p/5378272484?red_tag=1463985562 额外卡牌
-         * 
+         * http://my.4399.com/forums/thread-934366 全战役资料
          * 
          * 
          */
