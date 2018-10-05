@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class RealCard:ScriptableObject
+public class RealCard:MonoBehaviour
 {
     //Card类似于数据库，而RealCard则是实际的卡牌
     //场上可能出现任意张同种类的卡
@@ -14,13 +14,35 @@ public class RealCard:ScriptableObject
     public int hp;  //实际血量
     public int atk; //实际攻击力
     public int turn;    //实际回合数
-    public enum Buff { 冰冻};
-    public Buff buff;   //一些状态效果
-    public RealCard(Card info)
-    {
-        this.info = info;
+    public enum _Buff {在牌堆,在手牌,被冰冻,在墓地,被诅咒,被陷阱};
+    public class Buff {
+        _Buff buff;   //一些状态效果
+        int var;    //状态可能具有参数
+        RealCard caster;    //状态可能具有施加者
+
+        public Buff(_Buff buff,int var = 1,RealCard caster = null)
+        {
+            this.buff = buff;
+            this.var = var;
+            this.caster = caster;
+        }
     }
 
+    public List<Buff> buffs;
+    public void initRealCard(Card info)
+    {
+        this.info = info;
+        this.hp = info.hp;
+        this.atk = info.atk;
+        this.turn = info.turn;
+        this.buffs.Add(new Buff(_Buff.在牌堆));
+    }
+
+    //准备阶段调用
+    public void onInit()
+    {
+
+    }
     //被指定时发动（包括被攻击）
     public void beCasted()
     {
