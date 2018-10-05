@@ -2388,12 +2388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651e6d1791ac6ae438d48dcb94d4edc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDeck: []
-  ourDeck: []
-  enemyHand: []
-  ourHand: []
-  enemyGrave: []
-  ourGrave: []
   turn: 1
   enemyHp: 0
   ourHp: 0
