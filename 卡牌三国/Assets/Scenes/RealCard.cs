@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RealCard:MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class RealCard:MonoBehaviour
     //场上可能出现任意张同种类的卡
     //这里存放所有技能的结算,以及debuff,以及卡牌所在的实体Object
     Card info;
-    
+    [HideInInspector]
     public int hp;  //实际血量
+    [HideInInspector]
     public int atk; //实际攻击力
+    [HideInInspector]
     public int turn;    //实际回合数
     public enum _Buff {在牌堆,在手牌,被冰冻,在墓地,被诅咒,被陷阱};
     public class Buff {
@@ -35,6 +38,7 @@ public class RealCard:MonoBehaviour
         this.hp = info.hp;
         this.atk = info.atk;
         this.turn = info.turn;
+        this.GetComponent<Image>().sprite = info.image;
         this.buffs.Add(new Buff(_Buff.在牌堆));
     }
 
@@ -61,5 +65,8 @@ public class RealCard:MonoBehaviour
 
     }
 
-
+    public void beClicked()
+    {
+        Debug.Log("Click" + info.name);
+    }
 }

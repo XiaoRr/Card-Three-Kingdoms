@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    [HideInInspector]
-    public List<RealCard> enemyDeck, ourDeck;   //敌我卡组
-    [HideInInspector]
-    public List<RealCard> enemyHand, ourHand;   //敌我手牌
+
+    public CardGroup enemyDeck, ourDeck;   //敌我卡组
+
+    public CardGroup enemyHand, ourHand;   //敌我手牌
     [HideInInspector]
     public List<RealCard> enemyGrave, ourGrave;   //敌我墓地
     [HideInInspector]
@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour {
     public Dictionary<string, Card> cards;
 
     public Transform enemyField, ourField;     //战场（水平布局）
-    public Transform enemyWaiting, ourWaiting;     //手牌（水平布局）
-    
+    //public Transform TS_enemyDeck, TS_ourDeck;  //牌库
     // Use this for initialization
     void Start () {
         cards = Global.Load();
+
         tmpInit();
     }
 
@@ -49,19 +49,18 @@ public class GameManager : MonoBehaviour {
         //为双方卡组装填7张卡牌
         //A方 究极藏獒队
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 4; i++)
         {
-            GameObject card = (GameObject)Instantiate(Resources.Load("Prefabs/战场卡牌"));
-            GameObject mUICanvas = GameObject.Find("我方手牌");
-
-            //enemyDeck.Add(rc);
+            GameObject card = (GameObject)Instantiate(Resources.Load("战场卡牌"));
+            card.GetComponent<RealCard>().initRealCard(cards["诸葛亮"]);
+            enemyHand.Add(card);
 
         }
         //B方 沙雕杂鱼队
-        rc = new RealCard(cards["游侠"]);
-        for (int i = 0; i < 7; i++)
+        //rc = new RealCard(cards["游侠"]);
+        for (int i = 0; i < 4; i++)
         {
-            ourDeck.Add(rc);
+           // ourDeck.Add(rc);
 
         }
     }
@@ -77,16 +76,16 @@ public class GameManager : MonoBehaviour {
         //我方回合
         if (turn % 2 == 1)
         {
-            if (ourDeck.Count == 0) return;
-            ourHand.Add(ourDeck[ourDeck.Count-1]);
-            ourDeck.RemoveAt(ourDeck.Count - 1);
+            //if (ourDeck.Count == 0) return;
+            //ourHand.Add(ourDeck[ourDeck.Count-1]);
+            //ourDeck.RemoveAt(ourDeck.Count - 1);
         }
         //敌方回合
         else
         {
-            if (enemyDeck.Count == 0) return;
-            enemyHand.Add(enemyDeck[enemyDeck.Count - 1]);
-            enemyDeck.RemoveAt(enemyDeck.Count - 1);
+           // if (enemyDeck.Count == 0) return;
+            //enemyHand.Add(enemyDeck[enemyDeck.Count - 1]);
+            //enemyDeck.RemoveAt(enemyDeck.Count - 1);
         }
     }
 
@@ -96,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    void addCardTo(int i,RealCard rc)
+    void AddCardTo(int i,RealCard rc)
     {
         //GameObject go = new GameObject()
     }
