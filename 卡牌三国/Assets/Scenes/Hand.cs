@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 class Hand : CardGroup
 {
@@ -10,7 +11,7 @@ class Hand : CardGroup
         //throw new NotImplementedException();
     }
 
-    public new void Add(RealCard card)
+    public new void Add(GameObject card)
     {
         base.Add(card);
         card.transform.parent = this.owner.transform;   //设置卡牌父节点为手牌

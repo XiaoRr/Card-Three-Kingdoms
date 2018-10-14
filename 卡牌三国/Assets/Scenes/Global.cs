@@ -63,4 +63,14 @@ public static class Global
         return dictionary;
     }
 
+    //寻找子物体desu
+    public static Transform GetTransform(Transform check, string name)
+    {
+        foreach (Transform t in check.GetComponentsInChildren<Transform>())
+        {
+            if (t.name == name) { return t; }
+            GetTransform(t, name);
+        }
+        return null;
+    }
 }

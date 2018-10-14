@@ -17,6 +17,7 @@ public class RealCard:MonoBehaviour
     public int atk; //实际攻击力
     [HideInInspector]
     public int turn;    //实际回合数
+    private GameManager gm; //管理类的引用
     public enum _Buff {在牌堆,在手牌,被冰冻,在墓地,被诅咒,被陷阱};
     public class Buff {
         _Buff buff;   //一些状态效果
@@ -32,14 +33,16 @@ public class RealCard:MonoBehaviour
     }
 
     public List<Buff> buffs;
-    public void initRealCard(Card info)
+    public void initRealCard(GameManager gm, Card info)
     {
         this.info = info;
         this.hp = info.hp;
         this.atk = info.atk;
         this.turn = info.turn;
-        this.GetComponent<Image>().sprite = info.image;
+        this.GetComponent<Image>().overrideSprite = info.image;
+        this.buffs = new List<Buff>();
         this.buffs.Add(new Buff(_Buff.在牌堆));
+        this.gm = gm;
     }
 
     //准备阶段调用
@@ -68,5 +71,6 @@ public class RealCard:MonoBehaviour
     public void beClicked()
     {
         Debug.Log("Click" + info.name);
+        gm.largeImg.overrideSprite = info.image;
     }
 }
