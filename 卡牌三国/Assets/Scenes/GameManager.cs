@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     public CardGroup enemyDeck, ourDeck;   //敌我卡组
 
     public CardGroup enemyHand, ourHand;   //敌我手牌
+
+    public Image largeImg; //大图浏览页面
     [HideInInspector]
     public List<RealCard> enemyGrave, ourGrave;   //敌我墓地
     [HideInInspector]
@@ -51,8 +54,8 @@ public class GameManager : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = (GameObject)Instantiate(Resources.Load("战场卡牌"));
-            card.GetComponent<RealCard>().initRealCard(cards["诸葛亮"]);
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this,cards["诸葛亮"]);
             enemyHand.Add(card);
 
         }

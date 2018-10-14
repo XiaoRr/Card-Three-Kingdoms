@@ -40,9 +40,12 @@ public class Card {
         //Debug.Log(match.Groups[0].Value + ' ' + match.Groups[1].Value);
 
         this.info = info;
-        //首先获得卡图
-        image = (Sprite)Resources.Load(info,typeof(Sprite));
+
+        
         info = info.Substring(0, info.Length - 4);   //去除最后的.jpg
+        //首先获得卡图
+        image = (Sprite)Resources.Load("Cards/" + info, typeof(Sprite));
+        Debug.Assert(image, "Cards/" + info);
         //以下为解析info并赋值的过程
         string[] tmp = info.Split(new char[] { '_' });
 

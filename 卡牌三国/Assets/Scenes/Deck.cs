@@ -9,7 +9,7 @@ class Deck:CardGroup
 {
 
 
-    public new void Add(RealCard card)
+    public new void Add(GameObject card)
     {
         base.Add(card);
         //card.transform.parent = this.owner.transform;
@@ -24,7 +24,7 @@ class Deck:CardGroup
     //卡组不需要显示卡片 只需要显示卡组里有么有卡
     void Update()
     {
-        if (cards.Any())
+        if (owner.childCount != 0)
         {
             this.GetComponent<CanvasGroup>().alpha = 1;
         
