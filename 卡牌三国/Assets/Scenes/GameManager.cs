@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public CardGroup enemyDeck, ourDeck;   //敌我卡组
+    public Deck enemyDeck, ourDeck;   //敌我卡组
 
-    public CardGroup enemyHand, ourHand;   //敌我手牌
+    public Hand enemyHand, ourHand;   //敌我手牌
 
+    public BattleField enemyField, ourField;     //战场（水平布局）
     public Image largeImg; //大图浏览页面
     [HideInInspector]
     public List<RealCard> enemyGrave, ourGrave;   //敌我墓地
@@ -20,7 +21,10 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public Dictionary<string, Card> cards;
 
-    public Transform enemyField, ourField;     //战场（水平布局）
+
+
+    //一些运行控制变量
+    //public 
     //public Transform TS_enemyDeck, TS_ourDeck;  //牌库
     // Use this for initialization
     void Start () {
@@ -49,22 +53,47 @@ public class GameManager : MonoBehaviour {
     //测试用初始化函数
     void tmpInit()
     {
-        //为双方卡组装填7张卡牌
-        //A方 究极藏獒队
+        //测试每个区域的功能是否正常
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this, cards["火炎兽"]);
+            ourDeck.Add(card);
+        }
 
         for (int i = 0; i < 4; i++)
         {
             GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this,cards["诸葛亮"]);
-            enemyHand.Add(card);
-
+            card.GetComponent<RealCard>().initRealCard(this, cards["天雷卫"]);
+            enemyDeck.Add(card);
         }
-        //B方 沙雕杂鱼队
-        //rc = new RealCard(cards["游侠"]);
+
         for (int i = 0; i < 4; i++)
         {
-           // ourDeck.Add(rc);
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this, cards["诸葛亮"]);
+            ourHand.Add(card);
+        }
 
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this, cards["曹操"]);
+            enemyHand.Add(card);
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this, cards["藏獒"]);
+            ourField.Add(card);
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            card.GetComponent<RealCard>().initRealCard(this, cards["雪翼虎"]);
+            enemyField.Add(card);
         }
     }
 
@@ -103,3 +132,7 @@ public class GameManager : MonoBehaviour {
         //GameObject go = new GameObject()
     }
 }
+
+
+//动画完成后执行事件 可能有用
+//https://blog.csdn.net/qq_34244317/article/details/78756320
