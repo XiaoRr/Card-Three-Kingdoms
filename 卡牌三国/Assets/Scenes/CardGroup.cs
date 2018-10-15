@@ -13,7 +13,7 @@ public abstract class CardGroup:MonoBehaviour
     //把该类中的指定对象送向另一个CardGroup
     public void sendTo(GameObject card,Transform otherGroup)
     {
-        card.transform.SetParent(otherGroup);
+        card.transform.SetParent(otherGroup,false);
     }
 
     void Start()
@@ -22,7 +22,7 @@ public abstract class CardGroup:MonoBehaviour
     //添加一张卡片
     public void Add(GameObject card)
     {
-        card.transform.SetParent(owner);
+        card.transform.SetParent(owner, false);
     }
 
     //刷新事件，容器内容变化时 需要重新显示容器 例如手牌由2张变为3张时的重绘
