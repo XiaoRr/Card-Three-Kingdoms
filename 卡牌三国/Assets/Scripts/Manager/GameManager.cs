@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
     public Hand enemyHand, ourHand;   //敌我手牌
 
     public BattleField enemyField, ourField;     //战场（水平布局）
+
+    public Logger logger;   //日志记录器
     public Image largeImg; //大图浏览页面
     [HideInInspector]
     public List<RealCard> enemyGrave, ourGrave;   //敌我墓地
@@ -24,32 +26,41 @@ public class GameManager : MonoBehaviour {
 
 
     //一些运行控制变量
-    //public 
-    //public Transform TS_enemyDeck, TS_ourDeck;  //牌库
+    private bool flag = true;  //逻辑停止信号
     // Use this for initialization
     void Start () {
         cards = Global.Load();
 
         tmpInit();
+
+        StartCoroutine(GameLogic());
     }
 
     // Update is called once per frame
     void Update () {
-        //抽卡
-        DrawCard();
-        //结算战斗
-        Battle();
+
         //结算死亡
 
             //结算胜利
             //结算buff
 
-        if (turn > 80)
-        {
-            Debug.Log("draw");
-        }
 	}
 
+    IEnumerator GameLogic()
+    {
+        while (flag)
+        {
+            //抽卡
+            //DrawCard();
+            //logger.addLog("测试种");
+            //CastBeforeBattle();
+
+            //结算战斗
+            //Battle();
+            yield return new WaitForSeconds(0.5f);
+        }
+      
+    }
     //测试用初始化函数
     void tmpInit()
     {
@@ -105,20 +116,18 @@ public class GameManager : MonoBehaviour {
     //抽卡 将卡组的卡移到手牌
     void DrawCard()
     {
+        //yield return new WaitForSeconds(0.5f);
         //我方回合
         if (turn % 2 == 1)
         {
-            //if (ourDeck.Count == 0) return;
-            //ourHand.Add(ourDeck[ourDeck.Count-1]);
-            //ourDeck.RemoveAt(ourDeck.Count - 1);
+
         }
         //敌方回合
         else
         {
-           // if (enemyDeck.Count == 0) return;
-            //enemyHand.Add(enemyDeck[enemyDeck.Count - 1]);
-            //enemyDeck.RemoveAt(enemyDeck.Count - 1);
+
         }
+        //yield return new WaitForSeconds(0.5f);
     }
 
     //战斗阶段

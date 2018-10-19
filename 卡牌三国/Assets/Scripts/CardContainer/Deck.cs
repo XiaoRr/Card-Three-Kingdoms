@@ -13,7 +13,7 @@ public class Deck:CardGroup
     {
         base.Add(card);
         card.transform.position = new Vector3(10000, 10000, 10000);     //移动到视野外，因为牌组内的牌不可见
-        Debug.Log(card.transform.position);
+        //Debug.Log(card.transform.position);
         //card.transform.parent = this.owner.transform;
 
     }
