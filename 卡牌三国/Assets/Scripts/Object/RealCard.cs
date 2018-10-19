@@ -10,7 +10,8 @@ public class RealCard:MonoBehaviour
     //Card类似于数据库，而RealCard则是实际的卡牌
     //场上可能出现任意张同种类的卡
     //这里存放所有技能的结算,以及debuff,以及卡牌所在的实体Object
-    Card info;
+    [HideInInspector]
+    public Card info;
     [HideInInspector]
     public int hp;  //实际血量
     [HideInInspector]

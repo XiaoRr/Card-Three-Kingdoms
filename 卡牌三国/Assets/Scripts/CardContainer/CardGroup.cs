@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 //卡片容器类的父类，抽象
 public abstract class CardGroup:MonoBehaviour
@@ -11,9 +12,9 @@ public abstract class CardGroup:MonoBehaviour
 
     public Transform owner;    //游戏中对应的载体
     //把该类中的指定对象送向另一个CardGroup
-    public void sendTo(GameObject card,Transform otherGroup)
+    public void sendTo(Transform card,CardGroup otherGroup)
     {
-        card.transform.SetParent(otherGroup,false);
+        card.SetParent(otherGroup.owner,false);
     }
 
     void Start()
@@ -25,6 +26,20 @@ public abstract class CardGroup:MonoBehaviour
         card.transform.SetParent(owner, false);
     }
 
+    //洗牌
+    public void shuffle()
+    {
+        int num = owner.childCount; //卡牌数量
+        foreach(Transform ts in owner)
+        {
+            ts.SetSiblingIndex(Random.Range(0,num));
+        }
+    }
     //刷新事件，容器内容变化时 需要重新显示容器 例如手牌由2张变为3张时的重绘
     public abstract void refresh();
+
+    public bool empty()
+    {
+        return owner.childCount == 0;
+    }
 }

@@ -27,7 +27,7 @@ public class Logger : MonoBehaviour {
 	}
 
     //添加日志
-    public void addLog(string newLog)
+    public void Log(string newLog)
     {
         newLog += Environment.NewLine;
         text.text += newLog;
