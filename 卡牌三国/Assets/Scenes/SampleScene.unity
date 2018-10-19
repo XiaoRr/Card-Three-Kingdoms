@@ -142,7 +142,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1190631953}
-  - {fileID: 1999334146}
   m_Father: {fileID: 385115449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -296,7 +295,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1888629621130548, guid: 09077dd72a00aeb4aa8fe0faa01c9082, type: 2}
       propertyPath: m_Name
-      value: "\u8840\u6761 (1)"
+      value: HealthBar1
       objectReference: {fileID: 0}
     - target: {fileID: 224363392395909334, guid: 09077dd72a00aeb4aa8fe0faa01c9082,
         type: 2}
@@ -623,7 +622,7 @@ GameObject:
   - component: {fileID: 385115451}
   - component: {fileID: 385115450}
   m_Layer: 5
-  m_Name: "\u6ED1\u52A8\u63A7\u5236"
+  m_Name: Scroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385115450
@@ -700,7 +699,7 @@ GameObject:
   - component: {fileID: 421228452}
   - component: {fileID: 421228451}
   m_Layer: 5
-  m_Name: "\u5361\u724C\u5927\u56FE"
+  m_Name: LargeCardImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +892,7 @@ GameObject:
   - component: {fileID: 531166491}
   - component: {fileID: 531166489}
   m_Layer: 5
-  m_Name: "\u6587\u5B57\u80CC\u666F"
+  m_Name: TextBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,7 +1082,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1419615249667694, guid: f085a049d6bc7684d9866e8e821bdc39, type: 2}
       propertyPath: m_Name
-      value: "\u654C\u65B9\u724C\u7EC4"
+      value: EnemyDeck
       objectReference: {fileID: 0}
     - target: {fileID: 224038435452296460, guid: f085a049d6bc7684d9866e8e821bdc39,
         type: 2}
@@ -1220,7 +1219,7 @@ GameObject:
   - component: {fileID: 1134378602}
   - component: {fileID: 1134378601}
   m_Layer: 5
-  m_Name: "\u5DE6\u8FB9\u680F"
+  m_Name: LeftGroup_VerticalLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1298,7 +1297,7 @@ GameObject:
   - component: {fileID: 1159162457}
   - component: {fileID: 1159162456}
   m_Layer: 5
-  m_Name: "\u6218\u573A"
+  m_Name: BattleField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,7 +1320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -0.00004523681, y: 0}
+  m_AnchoredPosition: {x: 0.00004261397, y: 0}
   m_SizeDelta: {x: 10, y: 496.8}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1159162456
@@ -1455,7 +1454,7 @@ GameObject:
   - component: {fileID: 1190631956}
   - component: {fileID: 1190631957}
   m_Layer: 5
-  m_Name: "\u6587\u5B57\u5185\u5BB9"
+  m_Name: Log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1476,8 +1475,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 546, y: 133.7705}
+  m_AnchoredPosition: {x: 0, y: -0.0000033516187}
+  m_SizeDelta: {x: 546, y: 133.04349}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1190631954
 MonoBehaviour:
@@ -1674,7 +1673,7 @@ GameObject:
   - component: {fileID: 1268320505}
   - component: {fileID: 1268320504}
   m_Layer: 5
-  m_Name: "\u4E2D\u95F4\u680F"
+  m_Name: CenterGroup_VerticalLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1753,7 +1752,7 @@ GameObject:
   - component: {fileID: 1311695235}
   - component: {fileID: 1311695234}
   m_Layer: 5
-  m_Name: "\u53F3\u8FB9\u680F"
+  m_Name: RightGroup_VerticalLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1941,7 +1940,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1419615249667694, guid: f085a049d6bc7684d9866e8e821bdc39, type: 2}
       propertyPath: m_Name
-      value: "\u6211\u65B9\u724C\u7EC4"
+      value: OurDeck
       objectReference: {fileID: 0}
     - target: {fileID: 224038435452296460, guid: f085a049d6bc7684d9866e8e821bdc39,
         type: 2}
@@ -2114,7 +2113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00007584117, y: -10}
+  m_AnchoredPosition: {x: -0.0000013995386, y: -10}
   m_SizeDelta: {x: -1079.6, y: -21.600006}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1814446842
@@ -2185,7 +2184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000055061602, y: 0.0000016269505}
+  m_AnchoredPosition: {x: 0.000019380028, y: 0.0000016269505}
   m_SizeDelta: {x: -1079.6, y: 248.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1834421535
@@ -2269,7 +2268,7 @@ GameObject:
   - component: {fileID: 1875995846}
   - component: {fileID: 1875995849}
   m_Layer: 5
-  m_Name: "\u654C\u65B9\u624B\u724C"
+  m_Name: EnemyHand_ScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2524,7 +2523,7 @@ GameObject:
   - component: {fileID: 1906958122}
   - component: {fileID: 1906958121}
   m_Layer: 5
-  m_Name: "\u6218\u573A_ScrollView"
+  m_Name: BattleField_ScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2614,75 +2613,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1999334145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1999334146}
-  - component: {fileID: 1999334148}
-  - component: {fileID: 1999334147}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1999334146
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999334145}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1082674, y: 1.1082674, z: 1.1082674}
-  m_Children: []
-  m_Father: {fileID: 170110481}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 613.96094, y: 130.5353}
-  m_SizeDelta: {x: 165.09, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1999334147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999334145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300014, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1999334148
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999334145}
-  m_CullTransparentMesh: 0
 --- !u!1 &2101192816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,7 +2626,7 @@ GameObject:
   - component: {fileID: 2101192818}
   - component: {fileID: 2101192821}
   m_Layer: 5
-  m_Name: "\u6211\u65B9\u624B\u724C"
+  m_Name: OurHand_ScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3044,6 +2974,10 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888629621130548, guid: 09077dd72a00aeb4aa8fe0faa01c9082, type: 2}
+      propertyPath: m_Name
+      value: HealthBar2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09077dd72a00aeb4aa8fe0faa01c9082, type: 2}

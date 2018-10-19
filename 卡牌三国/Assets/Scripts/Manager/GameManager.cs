@@ -69,42 +69,42 @@ public class GameManager : MonoBehaviour {
         //测试每个区域的功能是否正常
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["火炎兽"]);
             ourDeck.Add(card);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["天雷卫"]);
             enemyDeck.Add(card);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["诸葛亮"]);
             ourHand.Add(card);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["曹操"]);
             enemyHand.Add(card);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["藏獒"]);
             ourField.Add(card);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject card = Instantiate(Resources.Load("Prefabs/战场卡牌") as GameObject);
+            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
             card.GetComponent<RealCard>().initRealCard(this, cards["雪翼虎"]);
             enemyField.Add(card);
         }
