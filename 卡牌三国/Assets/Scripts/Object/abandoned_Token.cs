@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using static TokenManager;
 
-public class Token : MonoBehaviour {
+public class ABdToken : MonoBehaviour {
     [HideInInspector]
     public int info;     //token数据 只有部分token（生命 冰冻 攻击力 等待）有这个数据 剩下的不会显示数据
     [HideInInspector]
-    public TokenKind tk;    //token种类 见enum TokenKind
+    public TokenType tk;    //token种类 见enum TokenKind
     [HideInInspector]
     public RealCard caster; //施加这个状态的对象，可能为空 这个沙雕变量只为瘟疫而存在 因为瘟疫不能叠加
 
@@ -22,7 +22,7 @@ public class Token : MonoBehaviour {
     public Sprite poison;
     public Sprite plague;
     public Sprite trap;
-
+    /*
     // Use this for initialization
     void Start () {
 		
@@ -78,5 +78,5 @@ public class Token : MonoBehaviour {
         SetKind(kd);
         SetInfo(info);
         this.caster = caster;
-    }
+    }*/
 }
