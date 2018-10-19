@@ -51,13 +51,15 @@ public class GameManager : MonoBehaviour {
         while (flag)
         {
             //抽卡
-            //DrawCard();
+            yield return DrawCard();
             //logger.addLog("测试种");
             //CastBeforeBattle();
 
             //结算战斗
             //Battle();
             yield return new WaitForSeconds(0.5f);
+            //回合计数器
+            turn++;
         }
       
     }
@@ -113,21 +115,26 @@ public class GameManager : MonoBehaviour {
     {
 
     }
+
     //抽卡 将卡组的卡移到手牌
-    void DrawCard()
+    private IEnumerator DrawCard()
     {
         //yield return new WaitForSeconds(0.5f);
         //我方回合
-        if (turn % 2 == 1)
+        if (turn % 2 == 1 && !ourDeck.empty())
         {
-
+            Transform tar = ourDeck.owner.GetChild(0);
+            ourDeck.sendTo(tar, ourHand);
+            logger.Log($"我方抽卡 {tar.GetComponent<RealCard>().info.name}");
         }
         //敌方回合
-        else
+        if (turn % 2 == 0 && !enemyDeck.empty())
         {
-
+            Transform tar = enemyDeck.owner.GetChild(0);
+            logger.Log($"敌方抽卡 {tar.GetComponent<RealCard>().info.name}");
+            enemyDeck.sendTo(enemyDeck.owner.GetChild(0), enemyHand);
         }
-        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
     }
 
     //战斗阶段
