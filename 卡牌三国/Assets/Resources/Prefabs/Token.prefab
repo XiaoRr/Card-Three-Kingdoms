@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224529000272130060}
   - component: {fileID: 222293534188375498}
   - component: {fileID: 114078341909970706}
-  - component: {fileID: 114028998796408952}
   m_Layer: 5
   m_Name: Token
   m_TagString: Untagged
@@ -46,29 +45,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114028998796408952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1611380806287812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8194313ea2d508e41ba02446ebcf7e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: 0
-  tk: 0
-  caster: {fileID: 0}
-  text: {fileID: 114947972485723394}
-  waiting: {fileID: 21300014, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  health: {fileID: 21300002, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  attack: {fileID: 21300006, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  frozen: {fileID: 21300000, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  burning: {fileID: 21300012, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  poison: {fileID: 21300004, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  plague: {fileID: 21300008, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
-  trap: {fileID: 21300010, guid: d47c55ff9d5cabe41a3c8d51f91cf434, type: 3}
 --- !u!114 &114078341909970706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +136,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 161, y: -260.13}
-  m_SizeDelta: {x: 58, y: 58}
+  m_SizeDelta: {x: 54, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224938357248973384
 RectTransform:

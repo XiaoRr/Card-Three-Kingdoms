@@ -17,7 +17,7 @@ public class TokenManager : MonoBehaviour {
  *     等待：在手牌区特有的属性，每回合-1 为0时上场
  *     毒发：本回合结束时失去n hp  该状态无法获得，由【中毒】转移而来
  */
-    public enum TokenKind { 攻击力, 燃烧, 冰冻, 生命, 瘟疫, 中毒, 陷阱, 等待, 毒发 };
+    public enum TokenType { 攻击力, 燃烧, 冰冻, 生命, 瘟疫, 中毒, 陷阱, 等待, 毒发 };
     // Use this for initialization
     void Start () {
 		
