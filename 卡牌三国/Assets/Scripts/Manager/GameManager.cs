@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public Dictionary<string, Card> cards;
 
-
+    public float gameSpeed = 0.2f;
 
     //一些运行控制变量
     private bool flag = true;  //逻辑停止信号
@@ -51,9 +51,10 @@ public class GameManager : MonoBehaviour {
     {
         while (flag)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(gameSpeed);
             //更新等待回合数，这个过程发生在抽卡之前
             yield return UpdateWaitingField();
+            //
             //抽卡
             yield return DrawCard();
             //yield return CastBeforeDraw();
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
             //结算战斗
             //Battle();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(gameSpeed);
             //回合计数器
             turn++;
         }
@@ -72,48 +73,23 @@ public class GameManager : MonoBehaviour {
     //测试用初始化函数
     void tmpInit()
     {
-        //测试每个区域的功能是否正常
-        for (int i = 0; i < 4; i++)
+        string[] testCardsNames = { "火炎兽", "天雷卫", "枪骑兵", "曹操", "藏獒", "蒙冲船" };
+        foreach(string testCardsName in testCardsNames)
         {
             GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["火炎兽"]);
+            card.GetComponent<RealCard>().initRealCard(this, cards[testCardsName]);
             ourDeck.Add(card);
         }
-
-        for (int i = 0; i < 4; i++)
+        foreach (string testCardsName in testCardsNames)
         {
             GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["天雷卫"]);
+            card.GetComponent<RealCard>().initRealCard(this, cards[testCardsName]);
             enemyDeck.Add(card);
         }
+        ourDeck.shuffle();
+        enemyDeck.shuffle();
 
-        for (int i = 0; i < 0; i++)
-        {
-            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["诸葛亮"]);
-            ourHand.Add(card);
-        }
 
-        for (int i = 0; i < 0; i++)
-        {
-            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["曹操"]);
-            enemyHand.Add(card);
-        }
-
-        for (int i = 0; i < 0; i++)
-        {
-            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["藏獒"]);
-            ourField.Add(card);
-        }
-
-        for (int i = 0; i < 0; i++)
-        {
-            GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
-            card.GetComponent<RealCard>().initRealCard(this, cards["雪翼虎"]);
-            enemyField.Add(card);
-        }
     }
 
     //洗牌
@@ -125,7 +101,7 @@ public class GameManager : MonoBehaviour {
     //抽卡 将卡组的卡移到手牌
     private IEnumerator DrawCard()
     {
-        //yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(gameSpeed);
         //我方回合
         if (turn % 2 == 1 && !ourDeck.empty())
         {
@@ -144,7 +120,7 @@ public class GameManager : MonoBehaviour {
             enemyDeck.sendTo(tar, enemyHand);
             logger.Log($"敌方抽卡 {tarRC.info.name}");
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(gameSpeed);
     }
 
     //减少一次等待时间 如果有完成等待的卡 放入战场
@@ -155,7 +131,10 @@ public class GameManager : MonoBehaviour {
             RealCard rc = obj.gameObject.GetComponent<RealCard>();
             if (rc.tm.waiting.CheckTurn())  //这张卡已经完成了冷却
             {
+                rc.HandToField();
+                logger.Log($"{rc.info.name}进场了");
                 enemyHand.sendTo(obj.transform, enemyField);
+                yield return new WaitForSeconds(gameSpeed);
             }
         }
         foreach (Transform obj in ourHand.owner)
@@ -163,11 +142,15 @@ public class GameManager : MonoBehaviour {
             RealCard rc = obj.gameObject.GetComponent<RealCard>();
             if (rc.tm.waiting.CheckTurn())  //这张卡已经完成了冷却
             {
+                rc.HandToField();
+                logger.Log($"{rc.info.name}进场了");
                 ourHand.sendTo(obj.transform, ourField);
+                yield return new WaitForSeconds(gameSpeed);
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(gameSpeed);
     }
+
 
     //战斗阶段
     void Battle()

@@ -11,6 +11,7 @@ public class WaitingToken : Token {
     public override void setNum(int num)
     {
         text.text = num.ToString();
+        this.num = num;
     }
 
     // Use this for initialization

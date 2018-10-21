@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using static TokenManager;
 
 public class RealCard:MonoBehaviour
 {
@@ -61,5 +62,15 @@ public class RealCard:MonoBehaviour
     {
         Debug.Log("Click" + info.name);
         gm.largeImg.overrideSprite = info.image;
+    }
+
+    /// <summary>
+    /// 从手牌置入战场时调用，主要是token的重设
+    /// </summary>
+    public void HandToField()
+    {
+        tm.RemoveToken(TokenType.等待);
+        tm.SetToken(TokenType.攻击力, info.atk);
+        tm.SetToken(TokenType.生命, info.hp);
     }
 }

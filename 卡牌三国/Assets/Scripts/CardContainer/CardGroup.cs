@@ -5,7 +5,9 @@ using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-//卡片容器类的父类，抽象
+/// <summary>
+/// 卡片容器类的父类，抽象类
+/// </summary>
 public abstract class CardGroup:MonoBehaviour
 {
     //protected List<RealCard> cards;    //一个有序的抽象数组
@@ -26,7 +28,9 @@ public abstract class CardGroup:MonoBehaviour
         card.transform.SetParent(owner, false);
     }
 
-    //洗牌
+    /// <summary>
+    /// 洗牌功能 待测试 洗牌均匀程度待论证
+    /// </summary>
     public void shuffle()
     {
         int num = owner.childCount; //卡牌数量
