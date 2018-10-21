@@ -23,10 +23,10 @@ public abstract class Token : MonoBehaviour {
     public abstract void setNum(int num);
     public void show()
     {
-        this.enabled = true;
+        gameObject.SetActive(true);
     }
     public void hide()
     {
-        this.enabled = false;
+        gameObject.SetActive(false);
     }
 }

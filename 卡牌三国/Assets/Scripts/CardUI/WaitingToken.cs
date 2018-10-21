@@ -24,4 +24,10 @@ public class WaitingToken : Token {
     {
 
     }
+    //新的回合 等待数-1 如果等待数<=0 返回true
+    public bool CheckTurn()
+    {
+        setNum(--num);
+        return num <= 0;
+    }
 }

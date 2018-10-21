@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114337858868978428}
   - component: {fileID: 114842294702929604}
   m_Layer: 5
-  m_Name: Health
+  m_Name: HealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 114099121883217592}
   - component: {fileID: 114025189678126976}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: AttackUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   hp: 0
   atk: 0
   turn: 0
+  tm: {fileID: 114667793694643280}
 --- !u!114 &114245748239320078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -584,6 +585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f2b8e132c6dc24f8abcbc3ce0f421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 114025189678126976}
+  health: {fileID: 114842294702929604}
+  waiting: {fileID: 114882587862072296}
 --- !u!114 &114684513673335508
 MonoBehaviour:
   m_ObjectHideFlags: 1

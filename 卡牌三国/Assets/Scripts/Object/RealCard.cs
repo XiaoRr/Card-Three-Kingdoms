@@ -19,21 +19,9 @@ public class RealCard:MonoBehaviour
     [HideInInspector]
     public int turn;    //实际回合数
     private GameManager gm; //管理类的引用
-    public enum _Buff {在牌堆,在手牌,被冰冻,在墓地,被诅咒,被陷阱};
-    public class Buff {
-        _Buff buff;   //一些状态效果
-        int var;    //状态可能具有参数
-        RealCard caster;    //状态可能具有施加者
 
-        public Buff(_Buff buff,int var = 1,RealCard caster = null)
-        {
-            this.buff = buff;
-            this.var = var;
-            this.caster = caster;
-        }
-    }
+    public TokenManager tm; //状态管理类
 
-    public List<Buff> buffs;
     public void initRealCard(GameManager gm, Card info)
     {
         this.info = info;
@@ -41,8 +29,8 @@ public class RealCard:MonoBehaviour
         this.atk = info.atk;
         this.turn = info.turn;
         this.GetComponent<Image>().overrideSprite = info.image;
-        this.buffs = new List<Buff>();
-        this.buffs.Add(new Buff(_Buff.在牌堆));
+        //this.buffs = new List<Buff>();
+        //this.buffs.Add(new Buff(_Buff.在牌堆));
         this.gm = gm;
     }
 
