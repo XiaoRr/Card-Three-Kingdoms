@@ -13,18 +13,18 @@ public class GameManager : MonoBehaviour {
 
     public BattleField enemyField, ourField;     //战场（水平布局）
 
+    public TurnCounter counter; //回合计数器
+
     public Logger logger;   //日志记录器
     public Image largeImg; //大图浏览页面
     [HideInInspector]
     public List<RealCard> enemyGrave, ourGrave;   //敌我墓地
     [HideInInspector]
-    public int turn = 1;   //当前回合数
-    [HideInInspector]
     public int enemyHp, ourHp;  //敌我血量
     [HideInInspector]
     public Dictionary<string, Card> cards;
 
-    public float gameSpeed = 0.2f;
+    public static float gameSpeed = 0.2f;
 
     //一些运行控制变量
     private bool flag = true;  //逻辑停止信号
@@ -66,9 +66,11 @@ public class GameManager : MonoBehaviour {
             //Battle();
             yield return new WaitForSeconds(gameSpeed);
             //回合计数器
-            turn++;
+            yield return counter.NextTurn();
+            
+
         }
-      
+
     }
     //测试用初始化函数
     void tmpInit()
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour {
     {
         //yield return new WaitForSeconds(gameSpeed);
         //我方回合
-        if (turn % 2 == 1 && !ourDeck.empty())
+        if (counter.turn % 2 == 1 && !ourDeck.empty())
         {
             Transform tar = ourDeck.owner.GetChild(0);
             RealCard tarRC = tar.gameObject.GetComponent<RealCard>();
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour {
             logger.Log($"我方抽卡 {tarRC.info.name}");
         }
         //敌方回合
-        if (turn % 2 == 0 && !enemyDeck.empty())
+        if (counter.turn % 2 == 0 && !enemyDeck.empty())
         {
             Transform tar = enemyDeck.owner.GetChild(0);
             RealCard tarRC = tar.gameObject.GetComponent<RealCard>();
