@@ -154,25 +154,23 @@ public class GameManager : MonoBehaviour {
     }
 
 
+    public IEnumerator CastSkill(SkillManager.Timing timing, CardGroup group)
+    {
+        for (int i = 0; i < group.owner.transform.childCount; i++)
+        {
+            yield return group.owner.transform.GetChild(i).GetComponent<RealCard>().skill.FindAndCastSkill(timing, group, i);
+        }
+    }
     //战斗阶段
     private IEnumerator Battle()
     {
         if (counter.turn % 2 == 0)
         {
-            foreach (Transform obj in enemyField.owner)
-            {
-                RealCard rc = obj.gameObject.GetComponent<RealCard>();
-                logger.Log($"{rc.info.name}check");
-                yield return rc.skill.FindAndCastSkill(SkillManager.Timing.战斗中);
-            }
+            yield return CastSkill(SkillManager.Timing.战斗中, enemyField);
         }
         if (counter.turn % 2 == 1)
         {
-            foreach (Transform obj in ourField.owner)
-            {
-                RealCard rc = obj.gameObject.GetComponent<RealCard>();
-                yield return rc.skill.FindAndCastSkill(SkillManager.Timing.战斗中);
-            }
+            yield return CastSkill(SkillManager.Timing.战斗中, ourField);
         }
 
     }

@@ -31,22 +31,47 @@ public class SkillManager{
 
     }
 
-    public IEnumerator FindAndCastSkill(Timing timing)
+    /// <summary>
+    /// 给定时机，让卡牌自己决定是否要发动技能
+    /// </summary>
+    /// <param name="timing">发动时机</param>
+    /// <param name="position">卡牌位置</param>
+    /// <returns></returns>
+    public IEnumerator FindAndCastSkill(Timing timing,CardGroup cg,int position = -1)
     {
+        /*
+        if(position == -1)  //无法判断卡牌位置
+        {
+            for(int i=0)
+        }
+        */
+
         foreach(var skill in skills)
         {
             if (!dic.ContainsKey(skill.skill)) continue;    //debug用，排除尚未加入的技能
             if (dic[skill.skill] != timing) continue;
-            yield return Cast(skill);
+            yield return Cast(skill,cg,position);
         }
     }
 
-    public IEnumerator Cast(Skill skill)
+    public IEnumerator Cast(Skill skill,CardGroup cg,int pos)
     {
+        //判断敌对group是谁
+        CardGroup enemy = (cg == gm.ourField) ? gm.enemyField : gm.ourField;
+        
         switch (skill.skill)
         {
             case MetaSkill.普通攻击:
-                gm.logger.Log($"{rc.info.name}攻击了");
+                if (enemy.owner.childCount > pos)
+                {
+                    gm.logger.Log($"{rc.info.name}攻击了{enemy.owner.GetChild(pos).GetComponent<RealCard>().info.name}");
+                }
+                else
+                {
+                    gm.logger.Log($"{rc.info.name}直接攻击了{((cg == gm.ourField) ? "敌":"我")}方玩家");
+
+                }
+
                 break;
         }
         yield return new WaitForSeconds(GameManager.gameSpeed);
