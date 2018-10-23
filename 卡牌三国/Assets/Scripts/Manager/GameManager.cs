@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public Dictionary<string, Card> cards;
 
-    public static float gameSpeed = 0.2f;
+    public static float gameSpeed = 0.5f;
 
     //一些运行控制变量
     private bool flag = true;  //逻辑停止信号
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
             //CastBeforeBattle();
 
             //结算战斗
-            //Battle();
+            yield return Battle();
             yield return new WaitForSeconds(gameSpeed);
             //回合计数器
             yield return counter.NextTurn();
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
     //测试用初始化函数
     void tmpInit()
     {
-        string[] testCardsNames = { "火炎兽", "天雷卫", "枪骑兵", "曹操", "藏獒", "蒙冲船" };
+        string[] testCardsNames = { "火炎兽", "捕猎者", "枪骑兵", "侦察卫", "藏獒", "蒙冲船" };
         foreach(string testCardsName in testCardsNames)
         {
             GameObject card = Instantiate(Resources.Load("Prefabs/Card") as GameObject);
@@ -155,8 +155,25 @@ public class GameManager : MonoBehaviour {
 
 
     //战斗阶段
-    void Battle()
+    private IEnumerator Battle()
     {
+        if (counter.turn % 2 == 0)
+        {
+            foreach (Transform obj in enemyField.owner)
+            {
+                RealCard rc = obj.gameObject.GetComponent<RealCard>();
+                logger.Log($"{rc.info.name}check");
+                yield return rc.skill.FindAndCastSkill(SkillManager.Timing.战斗中);
+            }
+        }
+        if (counter.turn % 2 == 1)
+        {
+            foreach (Transform obj in ourField.owner)
+            {
+                RealCard rc = obj.gameObject.GetComponent<RealCard>();
+                yield return rc.skill.FindAndCastSkill(SkillManager.Timing.战斗中);
+            }
+        }
 
     }
 

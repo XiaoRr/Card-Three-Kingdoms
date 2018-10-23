@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using static Card;
 using static TokenManager;
 
 public class RealCard:MonoBehaviour
@@ -14,15 +15,31 @@ public class RealCard:MonoBehaviour
     [HideInInspector]
     public Card info;
     [HideInInspector]
-    public int hp;  //实际血量
+    public int hp {
+        get
+        {
+            return tm.health.hp;
+        }
+        set
+        {
+            tm.health.setNum(value);
+        }
+    }  //实际血量
     [HideInInspector]
     public int atk; //实际攻击力
     [HideInInspector]
     public int turn;    //实际回合数
+    [HideInInspector]
+    public SkillManager skill;
     private GameManager gm; //管理类的引用
 
     public TokenManager tm; //状态管理类
 
+    /// <summary>
+    /// monobeha类无法使用new，但是可以使用这种方式初始化
+    /// </summary>
+    /// <param name="gm">gameManager的引用</param>
+    /// <param name="info">卡牌信息</param>
     public void initRealCard(GameManager gm, Card info)
     {
         this.info = info;
@@ -30,34 +47,14 @@ public class RealCard:MonoBehaviour
         this.atk = info.atk;
         this.turn = info.turn;
         this.GetComponent<Image>().overrideSprite = info.image;
+        skill = new SkillManager(gm, this, info.skills);
         //this.buffs = new List<Buff>();
         //this.buffs.Add(new Buff(_Buff.在牌堆));
         this.gm = gm;
     }
-
-    //准备阶段调用
-    public void onInit()
-    {
-
-    }
-    //被指定时发动（包括被攻击）
-    public void beCasted()
-    {
-
-    }
-    //战斗发动
-    public void onBattle()
-    {
-        //攻击力不为0的话 先攻击
-
-    }
-       
-    //回合结束时发动
-    public void onEndTurn()
-    {
-
-    }
-
+    /// <summary>
+    /// 被点击时调用，该函数注册于游戏中卡牌prefab的点击事件上
+    /// </summary>
     public void beClicked()
     {
         Debug.Log("Click" + info.name);

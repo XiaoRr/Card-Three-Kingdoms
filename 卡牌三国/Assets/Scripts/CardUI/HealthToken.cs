@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class HealthToken : Token {
 
     public Text text;
+    [HideInInspector]
+    public int hp;
     //public 
     public override void setNum(int num)
     {
         text.text = num.ToString();
+        this.hp = num;
     }
 
     // Use this for initialization

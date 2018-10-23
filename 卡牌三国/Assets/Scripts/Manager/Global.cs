@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using UnityEngine;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public static class Global
 {
@@ -73,4 +75,18 @@ public static class Global
         }
         return null;
     }
+
+    //深拷贝list
+    /*
+    public static List<T> Clone<T>(object List)
+    {
+        using (Stream objectStream = new MemoryStream())
+        {
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(objectStream, List);
+            objectStream.Seek(0, SeekOrigin.Begin);
+            return formatter.Deserialize(objectStream) as List<T>;
+        }
+    }
+    */
 }
