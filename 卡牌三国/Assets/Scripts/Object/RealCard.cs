@@ -67,7 +67,7 @@ public class RealCard:MonoBehaviour
     public void HandToField()
     {
         tm.RemoveToken(TokenType.等待);
-        tm.SetToken(TokenType.攻击力, info.atk);
-        tm.SetToken(TokenType.生命, info.hp);
+        tm.SetToken(TokenType.攻击力, this,info.atk);
+        tm.SetToken(TokenType.生命, this,info.hp);
     }
 }

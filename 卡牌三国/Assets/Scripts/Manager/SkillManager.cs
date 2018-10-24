@@ -14,9 +14,10 @@ public class SkillManager{
     //两个比较关键的类的引用，他们都是包含这个类的类
     public GameManager gm;  //游戏管理器
     public RealCard rc; //对应卡牌
-    private static Dictionary<MetaSkill, Timing> dic = new Dictionary<MetaSkill, Timing>()
+    private static Dictionary<MetaSkill, List<Timing>> dic = new Dictionary<MetaSkill, List<Timing>>()
         {
-            {MetaSkill.普通攻击,Timing.战斗中}
+            {MetaSkill.普通攻击,new List<Timing>{Timing.战斗中 } },
+            {MetaSkill.火焰,new List<Timing>{Timing.战斗中,Timing.被攻击} },
         };
     public SkillManager(GameManager _gm,RealCard _rc,List<Skill> _skills)
     {
@@ -40,7 +41,7 @@ public class SkillManager{
     public IEnumerator FindAndCastSkill(Timing timing,CardGroup cg,int position = -1)
     {
         /*
-        if(position == -1)  //无法判断卡牌位置
+        if(position == -1)  // 无法判断卡牌位置
         {
             for(int i=0)
         }
@@ -48,15 +49,24 @@ public class SkillManager{
 
         foreach(var skill in skills)
         {
-            if (!dic.ContainsKey(skill.skill)) continue;    //debug用，排除尚未加入的技能
-            if (dic[skill.skill] != timing) continue;
+            if (!dic.ContainsKey(skill.skill)) continue;    // debug用，排除尚未加入的技能
+            bool flg = false;
+            foreach(Timing tim in dic[skill.skill]) //就算是同个技能，也可能有多个timing 
+            {
+                if(tim == timing)
+                {
+                    flg = true;
+                    break;
+                }
+            }
+            if (!flg) continue;
             yield return Cast(skill,cg,position);
         }
     }
 
     public IEnumerator Cast(Skill skill,CardGroup cg,int pos)
     {
-        //判断敌对group是谁
+        // 判断敌对group是谁
         CardGroup enemy = (cg == gm.ourField) ? gm.enemyField : gm.ourField;
         
         switch (skill.skill)
@@ -64,12 +74,17 @@ public class SkillManager{
             case MetaSkill.普通攻击:
                 if (enemy.owner.childCount > pos)
                 {
-                    gm.logger.Log($"{rc.info.name}攻击了{enemy.owner.GetChild(pos).GetComponent<RealCard>().info.name}");
+                    RealCard enemyCard = enemy.owner.GetChild(pos).GetComponent<RealCard>();    // 获取对面的卡牌
+
+                    enemyCard.hp -= rc.atk; // 扣血
+                    gm.logger.Log($"{rc.info.name}攻击了{enemyCard.info.name}");
                 }
                 else
                 {
+                    // 直接攻击
+                    if (enemy == gm.enemyField) gm.enemyHealthBar.Hp -= rc.info.atk;
+                    else gm.ourHealthBar.Hp -= rc.info.atk;
                     gm.logger.Log($"{rc.info.name}直接攻击了{((cg == gm.ourField) ? "敌":"我")}方玩家");
-
                 }
 
                 break;

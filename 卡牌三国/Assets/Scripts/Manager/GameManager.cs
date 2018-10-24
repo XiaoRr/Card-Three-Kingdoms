@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 
     public TurnCounter counter; //回合计数器
 
+    public HealthBar ourHealthBar, enemyHealthBar;  //血条
+
     public Logger logger;   //日志记录器
     public Image largeImg; //大图浏览页面
     [HideInInspector]
@@ -35,6 +37,10 @@ public class GameManager : MonoBehaviour {
         tmpInit();
         //largeImg.gameObject.SetActive(false);
         StartCoroutine(GameLogic());
+
+        enemyHealthBar.Init(20);
+        ourHealthBar.Init(20);
+
     }
 
     // Update is called once per frame
@@ -109,7 +115,7 @@ public class GameManager : MonoBehaviour {
         {
             Transform tar = ourDeck.owner.GetChild(0);
             RealCard tarRC = tar.gameObject.GetComponent<RealCard>();
-            tarRC.tm.SetToken(TokenType.等待, tarRC.info.turn);
+            tarRC.tm.SetToken(TokenType.等待, tarRC,tarRC.info.turn);
             ourDeck.sendTo(tar, ourHand);
             logger.Log($"我方抽卡 {tarRC.info.name}");
         }
@@ -118,7 +124,7 @@ public class GameManager : MonoBehaviour {
         {
             Transform tar = enemyDeck.owner.GetChild(0);
             RealCard tarRC = tar.gameObject.GetComponent<RealCard>();
-            tarRC.tm.SetToken(TokenType.等待, tarRC.info.turn);
+            tarRC.tm.SetToken(TokenType.等待, tarRC,tarRC.info.turn);
             enemyDeck.sendTo(tar, enemyHand);
             logger.Log($"敌方抽卡 {tarRC.info.name}");
         }

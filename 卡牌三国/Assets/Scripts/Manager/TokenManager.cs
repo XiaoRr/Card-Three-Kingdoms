@@ -31,17 +31,19 @@ public class TokenManager : MonoBehaviour {
 	}
 
     //添加一个状态
-    public void SetToken(TokenType ty,int num = 1,RealCard real =null)
+    public void SetToken(TokenType ty, RealCard real,int num = 1)
     {
         switch (ty)
         {
             case TokenType.攻击力:
                 attack.show();
                 attack.setNum(num);
+                
                 break;
             case TokenType.生命:
                 health.show();
                 health.setNum(num);
+                health.maxHp = real.info.hp;    //需要额外存储一个hp，这里的real并不是敌人而是本体
                 break;
             case TokenType.等待:
                 waiting.show();

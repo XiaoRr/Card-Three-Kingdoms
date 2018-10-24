@@ -8,10 +8,17 @@ public class HealthToken : Token {
     public Text text;
     [HideInInspector]
     public int hp;
-    //public 
+    [HideInInspector]
+    public int maxHp;
+    /*
+    public int Hp{
+        get{return hp;}
+        set{setNum(value);}
+    }
+    */
     public override void setNum(int num)
     {
-        text.text = num.ToString();
+        text.text = (num < maxHp) ? $"<color=#FFBBFF>{num}</color>" : num.ToString();   //残血变红
         this.hp = num;
     }
 
