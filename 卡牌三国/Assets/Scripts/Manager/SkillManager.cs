@@ -9,7 +9,7 @@ using static Card;
 /// </summary>
 public class SkillManager{
     public List<Skill> skills;
-    public enum Timing { 抽卡前, 战斗后, 战斗中, 被攻击, 被法术锁定, 回合结束}
+    public enum Timing { 抽卡前,抽卡后,战斗后, 战斗中, 被攻击, 被法术锁定, 回合结束}
 
     //两个比较关键的类的引用，他们都是包含这个类的类
     public GameManager gm;  //游戏管理器
@@ -18,6 +18,7 @@ public class SkillManager{
         {
             {MetaSkill.普通攻击,new List<Timing>{Timing.战斗中 } },
             {MetaSkill.火焰,new List<Timing>{Timing.战斗中,Timing.被攻击} },
+            {MetaSkill.冲阵,new List<Timing>{Timing.抽卡后} }
         };
     public SkillManager(GameManager _gm,RealCard _rc,List<Skill> _skills)
     {
@@ -66,15 +67,13 @@ public class SkillManager{
 
     public IEnumerator Cast(Skill skill,CardGroup cg,int pos)
     {
-        // 判断敌对group是谁
-        CardGroup enemy = (cg == gm.ourField) ? gm.enemyField : gm.ourField;
-        
         switch (skill.skill)
         {
             case MetaSkill.普通攻击:
-                if (enemy.owner.childCount > pos)
+                Debug.Assert(cg == gm.our.field || cg == gm.enemy.field);
+                if (cg.side.enemy.field.owner.childCount > pos)
                 {
-                    RealCard enemyCard = enemy.owner.GetChild(pos).GetComponent<RealCard>();    // 获取对面的卡牌
+                    RealCard enemyCard = cg.side.enemy.field.owner.GetChild(pos).GetComponent<RealCard>();    // 获取对面的卡牌
 
                     enemyCard.hp -= rc.atk; // 扣血
                     gm.logger.Log($"{rc.info.name}攻击了{enemyCard.info.name}");
@@ -82,11 +81,30 @@ public class SkillManager{
                 else
                 {
                     // 直接攻击
-                    if (enemy == gm.enemyField) gm.enemyHealthBar.Hp -= rc.info.atk;
-                    else gm.ourHealthBar.Hp -= rc.info.atk;
-                    gm.logger.Log($"{rc.info.name}直接攻击了{((cg == gm.ourField) ? "敌":"我")}方玩家");
+                    cg.side.enemy.healthBar.Hp -= rc.info.atk;
+                    gm.logger.Log($"{rc.info.name}直接攻击了{((cg == gm.our.field) ? "敌":"我")}方玩家");
                 }
 
+                break;
+            case MetaSkill.冲阵:
+
+                if (cg.side.hand.owner.childCount == 0) {
+                    gm.logger.Log($"{rc.info.name}试图发动冲阵{skill.var}，但是手牌是空的");
+                }
+                else
+                {
+                    //随机选择一个目标
+                    RealCard tar = cg.side.hand.owner.GetChild(UnityEngine.Random.Range(0, cg.side.hand.owner.childCount)).GetComponent<RealCard>();
+                    gm.logger.Log($"{rc.info.name}为{tar.info.name}发动了冲阵{skill.var}");
+                    if (tar.tm.waiting.CheckTurn(skill.var))    //如果因此进场的话
+                    {
+                        yield return new WaitForSeconds(GameManager.gameSpeed);
+                        tar.HandToField();
+                        gm.logger.Log($"{tar.info.name}进场了");
+                        cg.sendTo(tar.transform, cg.side.field);
+                    }
+                }
+                
                 break;
         }
         yield return new WaitForSeconds(GameManager.gameSpeed);

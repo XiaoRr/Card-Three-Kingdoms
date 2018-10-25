@@ -512,7 +512,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 238.4}
+  m_SizeDelta: {x: 0, y: 238.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &236414122
 MonoBehaviour:
@@ -1084,11 +1084,10 @@ GameObject:
   - component: {fileID: 763528384}
   - component: {fileID: 763528383}
   - component: {fileID: 763528382}
-  - component: {fileID: 763528381}
   - component: {fileID: 763528380}
   - component: {fileID: 763528379}
   m_Layer: 5
-  m_Name: OurGravy
+  m_Name: OurGrave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,7 +1120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 763528377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a65de21a3c15743ab2a1dbe369881d, type: 3}
+  m_Script: {fileID: 11500000, guid: fb42f8c4ac507c741bcb2e3f7d2f3e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 763528378}
@@ -1142,7 +1141,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 763528381}
+        - m_Target: {fileID: 0}
           m_MethodName: beClicked
           m_Mode: 1
           m_Arguments:
@@ -1156,21 +1155,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &763528381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114193558343248376, guid: f085a049d6bc7684d9866e8e821bdc39,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763528377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4312d8f155bc9e44e9accb1e13051de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atk: 0
-  turn: 0
-  tm: {fileID: 0}
 --- !u!225 &763528382
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1600,11 +1584,10 @@ GameObject:
   - component: {fileID: 1137188823}
   - component: {fileID: 1137188822}
   - component: {fileID: 1137188821}
-  - component: {fileID: 1137188820}
   - component: {fileID: 1137188819}
   - component: {fileID: 1137188818}
   m_Layer: 5
-  m_Name: EnemyGravy
+  m_Name: EnemyGrave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1637,7 +1620,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1137188816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a65de21a3c15743ab2a1dbe369881d, type: 3}
+  m_Script: {fileID: 11500000, guid: fb42f8c4ac507c741bcb2e3f7d2f3e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 1137188817}
@@ -1658,7 +1641,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1137188820}
+        - m_Target: {fileID: 0}
           m_MethodName: beClicked
           m_Mode: 1
           m_Arguments:
@@ -1672,21 +1655,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &1137188820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114193558343248376, guid: f085a049d6bc7684d9866e8e821bdc39,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1137188816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4312d8f155bc9e44e9accb1e13051de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atk: 0
-  turn: 0
-  tm: {fileID: 0}
 --- !u!225 &1137188821
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1769,7 +1737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.00008365456, y: 0}
+  m_AnchoredPosition: {x: 0.00002263862, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1159162456
@@ -1924,10 +1892,10 @@ RectTransform:
   m_Father: {fileID: 1159162455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -258.4}
-  m_SizeDelta: {x: 10, y: 238.4}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 238.4}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1176181638
 MonoBehaviour:
@@ -2125,7 +2093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.00003053533}
+  m_AnchoredPosition: {x: 0, y: 0.000060589562}
   m_SizeDelta: {x: 546, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1190631954
@@ -2797,7 +2765,6 @@ GameObject:
   - component: {fileID: 1743966830}
   - component: {fileID: 1743966829}
   - component: {fileID: 1743966828}
-  - component: {fileID: 1743966827}
   - component: {fileID: 1743966825}
   - component: {fileID: 1743966826}
   m_Layer: 5
@@ -2843,7 +2810,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1743966827}
+        - m_Target: {fileID: 0}
           m_MethodName: beClicked
           m_Mode: 1
           m_Arguments:
@@ -2869,21 +2836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 1743966823}
---- !u!114 &1743966827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114193558343248376, guid: f085a049d6bc7684d9866e8e821bdc39,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1743966822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4312d8f155bc9e44e9accb1e13051de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atk: 0
-  turn: 0
-  tm: {fileID: 0}
 --- !u!225 &1743966828
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3162,21 +3114,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651e6d1791ac6ae438d48dcb94d4edc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDeck: {fileID: 1743966826}
-  ourDeck: {fileID: 2130911055}
-  enemyHand: {fileID: 1875995849}
-  ourHand: {fileID: 1184758893}
-  enemyField: {fileID: 236414124}
-  ourField: {fileID: 1176181640}
+  _enemyDeck: {fileID: 1743966826}
+  _ourDeck: {fileID: 2130911055}
+  _enemyHand: {fileID: 1875995849}
+  _ourHand: {fileID: 1184758893}
+  _enemyField: {fileID: 236414124}
+  _ourField: {fileID: 1176181640}
+  _ourHealthBar: {fileID: 529408265}
+  _enemyHealthBar: {fileID: 793040001}
+  _enemyGrave: {fileID: 763528379}
+  _ourGrave: {fileID: 1137188818}
   counter: {fileID: 645901126}
-  ourHealthBar: {fileID: 529408265}
-  enemyHealthBar: {fileID: 793040001}
   logger: {fileID: 1190631956}
   largeImg: {fileID: 421228454}
-  enemyGrave: []
-  ourGrave: []
-  enemyHp: 0
-  ourHp: 0
 --- !u!1 &1906958119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3521,7 +3471,6 @@ GameObject:
   - component: {fileID: 2130911060}
   - component: {fileID: 2130911059}
   - component: {fileID: 2130911058}
-  - component: {fileID: 2130911057}
   - component: {fileID: 2130911056}
   - component: {fileID: 2130911055}
   m_Layer: 5
@@ -3579,7 +3528,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2130911057}
+        - m_Target: {fileID: 0}
           m_MethodName: beClicked
           m_Mode: 1
           m_Arguments:
@@ -3593,21 +3542,6 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
---- !u!114 &2130911057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114193558343248376, guid: f085a049d6bc7684d9866e8e821bdc39,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2130911053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4312d8f155bc9e44e9accb1e13051de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atk: 0
-  turn: 0
-  tm: {fileID: 0}
 --- !u!225 &2130911058
 CanvasGroup:
   m_ObjectHideFlags: 0

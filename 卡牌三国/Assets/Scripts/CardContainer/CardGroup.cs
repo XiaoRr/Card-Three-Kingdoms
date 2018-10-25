@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using static GameManager;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -13,6 +14,7 @@ public abstract class CardGroup:MonoBehaviour
     //protected List<RealCard> cards;    //一个有序的抽象数组
 
     public Transform owner;    //游戏中对应的载体
+    public Side side;   //所属阵营的引用
     //把该类中的指定对象送向另一个CardGroup
     public void sendTo(Transform card,CardGroup otherGroup)
     {

@@ -25,10 +25,15 @@ public class WaitingToken : Token {
     {
 
     }
-    //新的回合 等待数-1 如果等待数<=0 返回true
-    public bool CheckTurn()
+    /// <summary>
+    /// 新的回合 等待数-var 如果等待数小于等于0 返回true
+    /// </summary>
+    /// <param name="var">减少的等待回合数</param>
+    /// <returns></returns>
+    public bool CheckTurn(int var = 1)
     {
-        setNum(--num);
+        num -= var;
+        setNum(num);
         return num <= 0;
     }
 }
