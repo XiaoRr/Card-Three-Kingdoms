@@ -9,7 +9,7 @@ using static Card;
 /// </summary>
 public class SkillManager{
     public List<Skill> skills;
-    public enum Timing { 抽卡前,抽卡后,战斗后, 战斗中, 被攻击, 被法术锁定, 回合结束}
+    public enum Timing { 抽卡前,抽卡后,战斗后, 战斗中, 被攻击, 被法术锁定, 送往墓地后,回合结束,}
 
     //两个比较关键的类的引用，他们都是包含这个类的类
     public GameManager gm;  //游戏管理器

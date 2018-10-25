@@ -115,6 +115,7 @@ public class Card {
         }
         catch (Exception e)
         {
+           
             Debug.Log(info);
         }
 

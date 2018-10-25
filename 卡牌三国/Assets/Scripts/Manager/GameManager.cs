@@ -94,11 +94,14 @@ public class GameManager : MonoBehaviour {
 
             //结算战斗
             yield return Battle();
-            yield return new WaitForSeconds(gameSpeed);
+
+            //结算伤亡
+            yield return CheckDeath(counter.turn % 2 == 1 ? enemy.field : our.field);
+
             //回合计数器
             yield return counter.NextTurn();
-            
 
+            yield return new WaitForSeconds(gameSpeed);
         }
 
     }
@@ -215,8 +218,25 @@ public class GameManager : MonoBehaviour {
     {
         //GameObject go = new GameObject()
     }
+
+    private IEnumerator CheckDeath(CardGroup field)
+    {
+        Debug.Assert(field == our.field || field == enemy.field);
+        List<Transform> deadList = new List<Transform>();
+        for (int i = 0; i < field.owner.transform.childCount; i++)
+        {
+            if (field.owner.transform.GetChild(i).GetComponent<RealCard>().hp <= 0)
+                deadList.Add(field.owner.transform.GetChild(i));
+        }
+        foreach(Transform ts in deadList)
+        {
+            field.sendTo(ts, field.side.grave);
+            ts.GetComponent<RealCard>().skill.FindAndCastSkill(SkillManager.Timing.送往墓地后, field.side.grave);
+            yield return new WaitForSeconds(gameSpeed);
+        }
+    }
 }
 
 
-//动画完成后执行事件 可能有用
-//https://blog.csdn.net/qq_34244317/article/details/78756320
+// 动画完成后执行事件 可能有用
+// https://blog.csdn.net/qq_34244317/article/details/78756320
