@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour {
             if (field.owner.transform.GetChild(i).GetComponent<RealCard>().hp <= 0)
                 deadList.Add(field.owner.transform.GetChild(i));
         }
-        foreach(Transform ts in deadList)
+        foreach (Transform ts in deadList)
         {
             field.sendTo(ts, field.side.grave);
             ts.GetComponent<RealCard>().skill.FindAndCastSkill(SkillManager.Timing.送往墓地后, field.side.grave);
