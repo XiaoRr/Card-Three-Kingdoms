@@ -58,5 +58,12 @@ namespace Assets.GifAssets.PowerGif
 
 			StartCoroutine(Animate(gif, index));
 		}
-	}
+
+        public IEnumerator ExPlay(Gif gif)
+        {
+            Gif = gif;
+            StopAllCoroutines();
+            yield return StartCoroutine(Animate(Gif, 0));
+        }
+    }
 }

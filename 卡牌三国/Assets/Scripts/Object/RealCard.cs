@@ -35,6 +35,8 @@ public class RealCard:MonoBehaviour
 
     public TokenManager tm; //状态管理类
 
+    //public SkillManager sk;
+    public GIFPlayer gp;    //动画管理
     /// <summary>
     /// monobeha类无法使用new，但是可以使用这种方式初始化
     /// </summary>

@@ -77,6 +77,7 @@ public class SkillManager{
 
                     enemyCard.hp -= rc.atk; // 扣血
                     gm.logger.Log($"{rc.info.name}攻击了{enemyCard.info.name}");
+                    yield return rc.gp.playGIFAnimation();
                 }
                 else
                 {
